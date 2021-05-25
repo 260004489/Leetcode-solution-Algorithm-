@@ -1,0 +1,21 @@
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        num_str = str(num)
+        num_list = list(num_str)
+        symbol_list = ["I","V","X","L","C","D","M",]
+        
+        num_dig = len(num_list)
+        
+        result = ""
+        for x in range(num_dig):
+            if(num_list[num_dig-1-x]=="4"):
+                result = symbol_list[x*2] + symbol_list[x+x+1] + result
+            elif(num_list[num_dig-1-x]=="9"):
+                result = symbol_list[x*2] + symbol_list[x+2+x] + result
+            else:
+                if(int(num_list[num_dig-1-x])<4):
+                    result = symbol_list[x*2]*int(num_list[num_dig-1-x]) + result
+                if(int(num_list[num_dig-1-x])>4):
+                    result = symbol_list[(x*2)+1] + symbol_list[x*2]*(int(num_list[num_dig-1-x])-5) + result
+
+        return(result)

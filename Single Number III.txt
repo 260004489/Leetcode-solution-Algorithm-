@@ -1,0 +1,17 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> List[int]:
+        twice = []
+        answer = []
+        answer = nums.copy()
+        count = 0
+        
+        
+             
+        n = len(nums)
+        for i in range(n):
+            if (nums.count(nums[i])>1):
+                twice.append(nums[i])
+                answer.remove(twice[count])
+                count +=1
+                
+        return(answer)
